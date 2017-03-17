@@ -12,8 +12,7 @@
 #$ -l res_mem=4000
 #$ -l res_tmpfs=1000
 #
-#$ -l res_image=nrc_all_default_ubuntu-14.04-amd64_latest
-##$ -l res_image=nrcan_all_default_ubuntu-14.04-amd64_latest
+#$ -l res_image=dfo_all_default_ubuntu_14.04-amd64_latest 
 #
 #$ -l h_rt=600
 
