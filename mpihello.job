@@ -1,23 +1,27 @@
 #! /bin/bash
-#
-# mpihello.job
-#
+# Join stdout and stderr
 #$ -j y
-#$ -o $HOME/mpihello.out
-#
-#$ -N MPIHELLOCLUSTER # job name
-#
+# Name of the output file
+#$ -o $HOME/github/hpc/mpihello.out
+# Mail on (b)egin, (e)nd, (a)bort
+#$ -m bea
+#$ -M chris.grandin@dfo-mpo.gc.ca
+# Name of the job
+#$ -N test-job
+# Num slots for dev environment (must be at least 1)
 #$ -pe dev 2
+# Num CPUs (must be at least 1)
 #$ -l res_cpus=8
+# Amount memort requested (in MB)
 #$ -l res_mem=4000
+# Amount temp filespace requested (in MB)
 #$ -l res_tmpfs=1000
-#
+# Container image to use
 #$ -l res_image=dfo_all_default_ubuntu_14.04-amd64_latest 
-#
+## -l res_image=nrc_all_default_ubuntu-14.04-amd64_latest 
+# Amount of wallclock/runtime (in seconds)
 #$ -l h_rt=600
-
-# load mpi environment
-. ssmuse-sh -x hpco/exp/openmpi-1.6.5
-
-# call your program
+# Load mpi environment
+. ssmuse-sh -p /fs/ssm/hpco/exp/openmpi-1.6.5/openmpi_1.6.5-ubuntu-14.04-amd64-64
+# Call the program
 rumpirun ~/github/hpc/mpihello 10 2
